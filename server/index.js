@@ -12,6 +12,7 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
+
 app.post('/task', async (req, res) => {
   const { task, isComplited } = req.body;
   const tasks = await taskService.addTask(task, isComplited);
