@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { ChangeEvent, SetStateAction, useEffect, useState } from "react";
 
 export const Task: React.FC = () => {
   const [task, setTask] = useState('');
@@ -41,7 +41,7 @@ export const Task: React.FC = () => {
     }, 50);
   };
 
-  const handleChange = (event) => {
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setTask(event.target.value);
   };
 
