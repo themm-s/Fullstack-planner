@@ -50,20 +50,25 @@ export const Task: React.FC = () => {
   }, []);
 
   return (
-    <div>
-      <input value={task} onChange={handleChange} />
-      <button onClick={handleSubmit}>Отправить</button>
-      <button onClick={handleDelete}>Удалить</button>
-      {manyTasks.map((tas, index) => {
-        return (
-          <>
-            <div key={tas._id}>
-              <h1>{tas.task}</h1>
-              <h2 key={index}></h2>
-            </div>
-          </>
-        );
-      })}
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 h-full text-white text-center m-3 p-4 content-between justify-between">
+      {manyTasks.map((task, index) => (
+        <div className="bg-black">{task.task}</div>
+      ))}
     </div>
+    // <div>
+    //   <input value={task} onChange={handleChange} />
+    //   <button onClick={handleSubmit}>Отправить</button>
+    //   <button onClick={handleDelete}>Удалить</button>
+    //   {manyTasks.map((tas, index) => {
+    //     return (
+    //       <>
+    //         <div key={tas._id}>
+    //           <h1>{tas.task}</h1>
+    //           <h2 key={index}></h2>
+    //         </div>
+    //       </>
+    //     );
+    //   })}
+    // </div>
   );
 };
