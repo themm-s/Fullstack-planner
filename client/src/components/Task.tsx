@@ -6,7 +6,6 @@ import { CheckBox } from "./CheckBox/CheckBox";
 export const Task: React.FC = () => {
   const [isChecked, setIsChecked] = useState(false);
   const [task, setTask] = useState('');
-  const [delTask, setDeleteTask] = useState<string>('');
   const [manyTasks, setManyTask] = useState<{
     _id: string,
     task: string,
@@ -68,8 +67,7 @@ export const Task: React.FC = () => {
       <button onClick={handleSubmit}>Отправить</button>
       <button onClick={handleDelete} className="mx-3">Удалить</button>
       <button onClick={fetchTasks}>Получить</button>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 text-white text-center w-1/2 m-3 p-4 
-    content-between justify-between">
+      <div className="grid items-centergrid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 text-white w-full m-3 p-4">
         {manyTasks.map((task, index) => (
           <React.Fragment key={task._id}>
             <div className="bg-black p-2 h-20 text-center"><CheckBox onChange={() => checkBoxChange(event, index)}>{task.task} - {index}</CheckBox></div>
@@ -80,19 +78,3 @@ export const Task: React.FC = () => {
     </>
   );
 };
-
-// <div>
-//   <input value={task} onChange={handleChange} />
-//   <button onClick={handleSubmit}>Отправить</button>
-//   <button onClick={handleDelete}>Удалить</button>
-//   {manyTasks.map((tas, index) => {
-//     return (
-//       <>
-//         <div key={tas._id}>
-//           <h1>{tas.task}</h1>
-//           <h2 key={index}></h2>
-//         </div>
-//       </>
-//     );
-//   })}
-// </div>
