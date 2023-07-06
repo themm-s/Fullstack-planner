@@ -3,6 +3,7 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const taskService = require('./services/task-service');
+const taskModel = require('./models/task-model');
 
 
 const PORT = process.env.PORT || 5000;
@@ -17,10 +18,9 @@ app.post('/task', async (req, res) => {
   res.json(tasks);
 });
 
-app.delete('/task', async (req, res) => {
-  const { task } = req.body;
-  const { deletedTasks } = await taskService.deleteTask({ task });
-  console.log(req.body);
+app.post('/deletetask', async (req, res) => {
+  const id = req.body?.id;
+  const deletedTasks = await taskService.deleteTask(id);
   res.json(deletedTasks);
 });
 

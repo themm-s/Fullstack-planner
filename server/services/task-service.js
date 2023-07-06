@@ -7,10 +7,10 @@ class TaskService {
     const createTask = await taskModel.create({ task: task });
     return { createTask };
   }
-  async deleteTask(task) {
-    const deleteTasks = await taskModel.deleteOne(task);
-    console.log(deleteTasks);
-    return { deleteTasks };
+  async deleteTask(id) {
+    const deleteTasks = await taskModel.findByIdAndDelete(id);
+    console.log('deletetask + 1' + deleteTasks);
+    return deleteTasks;
   }
   async getTasks() {
     const task = await taskModel.find();
