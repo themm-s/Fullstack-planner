@@ -19,7 +19,7 @@ app.post('/task', async (req, res) => {
 });
 
 app.post('/deletetask', async (req, res) => {
-  const id = req.body.id;
+  const id = req.body?.id;
   const deletedTasks = await taskService.deleteTask(id);
   res.json(deletedTasks);
 });
