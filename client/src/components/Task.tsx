@@ -13,19 +13,10 @@ export const Task: React.FC = () => {
     isComplited: boolean;
   }[]>([]);
 
-  const checkBoxChange = (event: React.ChangeEvent<HTMLInputElement>, index: number) => {
-    setIsChecked(event.target.checked);
-    console.log(event.target.checked);
-    setTask(manyTasks[index].task);
-    console.log(manyTasks[index]._id);
-    console.log(index);
-  };
-
   const fetchTasks = async () => {
     const response = await fetch('http://localhost:5000/getall');
     const data = await response.json();
     setManyTask(data);
-    console.log(data);
   };
 
   const handleSubmit = async () => {
@@ -75,7 +66,7 @@ export const Task: React.FC = () => {
       <div className="grid items-centergrid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 text-white w-full m-3 p-4">
         {manyTasks.map((task, index) => (
           <React.Fragment key={task._id}>
-            <div className="bg-black p-2 h-20 text-center"><CheckBox value={task._id} onChange={handleChange} onClick={handleDelete} />{task.task}</div>
+            <div className="bg-black p-2 h-20 text-center"><CheckBox value={task._id} onChange={handleChange} />{task.task}</div>
           </React.Fragment>
         ))
         }

@@ -9,7 +9,6 @@ class TaskService {
   }
   async deleteTask(id) {
     const deleteTasks = await taskModel.findByIdAndDelete(id);
-    console.log('deletetask + 1' + deleteTasks);
     return deleteTasks;
   }
   async getTasks() {
