@@ -29,6 +29,7 @@ export const Task: React.FC = () => {
     });
     setTimeout(() => {
       fetchTasks();
+      setTask('');
     }, 50);
   };
 
@@ -42,6 +43,7 @@ export const Task: React.FC = () => {
     });
     setTimeout(() => {
       fetchTasks();
+      setTask('');
     }, 50);
   };
 
