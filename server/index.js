@@ -3,7 +3,6 @@ const express = require('express');
 const cors = require('cors');
 const mongoose = require('mongoose');
 const taskService = require('./services/task-service');
-const taskModel = require('./models/task-model');
 
 
 const PORT = process.env.PORT || 5000;
