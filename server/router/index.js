@@ -1,7 +1,22 @@
-const Router = require('express').Router;
-const router = new Router();
-const taskService = require('../services/task-service');
+const express = require('express');
+const router = express.Router();
+const taskService = require('./taskService');
 
-router.get('/task', taskService.addTask);
+router.post('/task', async (req, res) => {
+  const { task, isComplited } = req.body;
+  const tasks = await taskService.addTask(task, isComplited);
+  res.json(tasks);
+});
+
+router.post('/deletetask', async (req, res) => {
+  const id = req.body?.id;
+  const deletedTasks = await taskService.deleteTask(id);
+  res.json(deletedTasks);
+});
+
+router.get('/getall', async (req, res) => {
+  const gettingTask = await taskService.getTasks();
+  res.json(gettingTask);
+});
 
 module.exports = router;
