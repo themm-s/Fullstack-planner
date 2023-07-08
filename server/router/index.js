@@ -1,6 +1,6 @@
 const express = require('express');
 const router = express.Router();
-const taskService = require('./taskService');
+const taskService = require('../services/task-service');
 
 router.post('/task', async (req, res) => {
   const { task, isComplited } = req.body;
