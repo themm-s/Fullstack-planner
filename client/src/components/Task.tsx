@@ -6,7 +6,6 @@ import { CheckBox } from "./CheckBox/CheckBox";
 
 
 export const Task: React.FC = () => {
-  const [isChecked, setIsChecked] = useState(false);
   const [task, setTask] = useState('');
   const [id, setId] = useState<string>('');
   const [manyTasks, setManyTask] = useState<{
@@ -15,13 +14,13 @@ export const Task: React.FC = () => {
     isComplited: boolean;
   }[]>([]);
 
-  const fetchTasks = async () => {
+  const getAllTasks = async () => {
     const response = await fetch('http://localhost:5000/getall');
     const data = await response.json();
     setManyTask(data);
   };
 
-  const handleSubmit = async () => {
+  const submitTask = async () => {
     fetch('http://localhost:5000/task', {
       method: 'POST',
       headers: {
@@ -30,12 +29,12 @@ export const Task: React.FC = () => {
       body: JSON.stringify({ task })
     });
     setTimeout(() => {
-      fetchTasks();
+      getAllTasks();
       setTask('');
     }, 50);
   };
 
-  const handleDelete = async () => {
+  const deleteTask = async () => {
     fetch('http://localhost:5000/deletetask', {
       method: 'POST',
       headers: {
@@ -44,12 +43,12 @@ export const Task: React.FC = () => {
       body: JSON.stringify({ id })
     });
     setTimeout(() => {
-      fetchTasks();
+      getAllTasks();
       setTask('');
     }, 50);
   };
 
-  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+  const changeId = (event: ChangeEvent<HTMLInputElement>) => {
     setId(event.target.value);
   };
 
@@ -58,16 +57,16 @@ export const Task: React.FC = () => {
   };
 
   useEffect(() => {
-    fetchTasks();
+    getAllTasks();
   }, []);
 
   return (
     <>
       <div className="flex justify-center text-white bg-blue-700 bg-opacity-50 w-1/3 rounded-3xl mt-5 mx-auto">
         <input type="text" className="m-3 text-black" onChange={changeInput} value={task} />
-        <button onClick={handleSubmit}>Добавить</button>
-        <button onClick={handleDelete} className="mx-3">Сделано</button>
-        <button onClick={fetchTasks}>Получить список</button>
+        <button onClick={submitTask}>Добавить</button>
+        <button onClick={deleteTask} className="mx-3">Сделано</button>
+        <button onClick={getAllTasks}>Получить список</button>
       </div>
       <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 text-white w-full m-3 p-4">
         {manyTasks.map((task, index) => (
@@ -82,7 +81,7 @@ export const Task: React.FC = () => {
               }}
             >
               <div className="bg-indigo-800 bg-opacity-50 rounded-xl p-2 h-20 flex items-center justify-center">
-                <CheckBox className="mx-1" value={task._id} onChange={handleChange} />
+                <CheckBox className="mx-1" value={task._id} onChange={changeId} />
                 {task.task}
               </div>
             </motion.div>
