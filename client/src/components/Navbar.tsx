@@ -10,7 +10,7 @@ type TNavbarProps = {
 
 const EachLinks = makeEach<INavbarLink, { click(link: INavbarLink): any; }>(
   ({ item: link }) => (
-    <a className="px-12 py-3 cursor-pointer rounded-full bg-cyan-300 bg-opacity-20 mx-5 my-3" href={link.id}> {link.title} </a>
+    <a className="px-12 py-3 cursor-pointer rounded-full bg-indigo-900 bg-opacity-80 mx-5 my-3" href={link.id}> {link.title} </a>
   )
 );
 
@@ -24,7 +24,7 @@ export const Navbar = (
       },
       ref
     ) => (
-      <div className={` bg-gray-500 text-white grid sm:flex bg-opacity-50 p-2 rounded-none sm:rounded-br-full sm:rounded-bl-full ${className} ${styles.centered}`} {...props} ref={ref}>
+      <div className={` bg-gray-500 text-white bg-opacity-50 p-2 rounded-br-full rounded-bl-full ${className} ${styles.centered}`} {...props} ref={ref}>
         <EachLinks items={navLinks} />
       </div>
     )

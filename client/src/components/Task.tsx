@@ -62,13 +62,13 @@ export const Task: React.FC = () => {
 
   return (
     <>
-      <div className="grid gap-4 sm:flex justify-center text-white bg-cyan-300 bg-opacity-50 w-full md:w-[75%] rounded-xl mt-5 p-3 mx-auto">
+      <div className="flex justify-center text-white bg-blue-700 bg-opacity-50 w-1/3 rounded-3xl mt-5 mx-auto">
         <input type="text" className="m-3 text-black" onChange={changeInput} value={task} />
         <button onClick={submitTask}>Добавить</button>
-        <button onClick={deleteTask} className="">Сделано</button>
+        <button onClick={deleteTask} className="mx-3">Сделано</button>
         <button onClick={getAllTasks}>Получить список</button>
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 text-white w-full p-4">
+      <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-5 gap-4 text-white w-full m-3 p-4">
         {manyTasks.map((task, index) => (
           <React.Fragment key={task._id}>
             <motion.div
@@ -86,6 +86,7 @@ export const Task: React.FC = () => {
               </div>
             </motion.div>
           </React.Fragment>
+
         ))
         }
       </div>
