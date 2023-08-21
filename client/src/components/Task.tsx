@@ -1,4 +1,5 @@
 import { motion } from "framer-motion";
+import { useRerender } from "hooks/useRerender";
 import { ChangeEvent, useEffect, useState } from "react";
 import React from "react";
 
@@ -58,7 +59,7 @@ export const Task: React.FC = () => {
 
   useEffect(() => {
     getAllTasks();
-  }, []);
+  }, [manyTasks.length]);
 
   return (
     <>

@@ -1,9 +1,10 @@
-require('dotenv').config();
-const express = require('express');
-const cors = require('cors');
-const mongoose = require('mongoose');
-const router = require('./router/index');
+import cors from "cors";
+import express from "express";
+import mongoose from "mongoose";
 
+import router from "./router";
+
+require('dotenv').config();
 
 const PORT = process.env.PORT || 5000;
 const app = express();
@@ -14,6 +15,7 @@ app.use(router);
 
 const start = async () => {
   try {
+    //@ts-ignore
     await mongoose.connect(process.env.DB_URL, {
       useNewUrlParser: true,
       useUnifiedTopology: true

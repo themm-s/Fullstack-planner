@@ -7,7 +7,6 @@ export type TForEachProps<T> = {
   children: TChildren | ((item: T, index: number, array: T[]) => TChildren);
 };
 
-
 export function ForEach<T>({ items, children }: TForEachProps<T>) {
   return createElement(
     Fragment,

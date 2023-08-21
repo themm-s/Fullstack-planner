@@ -5,4 +5,6 @@ const TaskSchema = new Schema({
   isComplited: { type: Boolean, default: false }
 });
 
-module.exports = model('Task', TaskSchema);
+const taskModel = model('Task', TaskSchema);
+
+export default taskModel; 
